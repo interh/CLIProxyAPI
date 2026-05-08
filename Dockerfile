@@ -23,7 +23,8 @@ RUN mkdir /CLIProxyAPI
 COPY --from=builder ./app/CLIProxyAPI /CLIProxyAPI/CLIProxyAPI
 
 # Updated config copy
-COPY config.yaml /CLIProxyAPI/config.yaml
+COPY config.example.yaml /CLIProxyAPI/config.yaml
+RUN sed -i 's/your-api-key-[0-9]/test-key/g' /CLIProxyAPI/config.yaml
 
 WORKDIR /CLIProxyAPI
 
